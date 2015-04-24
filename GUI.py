@@ -184,7 +184,172 @@ class GUI(Tk):
         self.photo22a=PhotoImage(file='E22a.pbm')
         self.pic22a=Label(self, image=self.photo22a, bd=0)
         self.pic22a.bind("<1>", lambda event:self.set(22))
-        self.pic22a.place(rely=0.291, relx=0.543)
+        self.pic22a.place(rely=0.333, relx=0.465)
+
+        self.photo22b=PhotoImage(file='E22b.pbm')
+        self.pic22b=Label(self, image=self.photo22b, bd=0)
+        self.pic22b.bind("<1>", lambda event:self.set(22))
+        self.pic22b.place(rely=0.3648, relx=0.445)
+
+        self.photo22c=PhotoImage(file='E22c.pbm')
+        self.pic22c=Label(self, image=self.photo22c, bd=0)
+        self.pic22c.bind("<1>", lambda event:self.set(22))
+        self.pic22c.place(rely=0.392, relx=0.443)
+
+        self.photo23=PhotoImage(file='E23.pbm')
+        self.pic23=Label(self, image=self.photo23, bd=0)
+        self.pic23.bind("<1>", lambda event:self.set(23))
+        self.pic23.place(rely=0.38, relx=0.552)
+
+        self.photo24=PhotoImage(file='E24.pbm')
+        self.pic24=Label(self, image=self.photo24, bd=0)
+        self.pic24.bind("<1>", lambda event:self.set(24))
+        self.pic24.place(rely=0.37, relx=0.503)
+
+        self.photo25=PhotoImage(file='E25.pbm')
+        self.pic25=Label(self, image=self.photo25, bd=0)
+        self.pic25.bind("<1>", lambda event:self.set(25))
+        self.pic25.place(rely=0.337, relx=0.506)
+
+        self.photo26=PhotoImage(file='E26.pbm')
+        self.pic26=Label(self, image=self.photo26, bd=0)
+        self.pic26.bind("<1>", lambda event:self.set(26))
+        self.pic26.place(rely=0.337, relx=0.522)
+
+        self.photo27=PhotoImage(file='E27.pbm')
+        self.pic27=Label(self, image=self.photo27, bd=0)
+        self.pic27.bind("<1>", lambda event:self.set(27))
+        self.pic27.place(rely=0.346, relx=0.553)
+
+        self.photo28=PhotoImage(file='E28.pbm')
+        self.pic28=Label(self, image=self.photo28, bd=0)
+        self.pic28.bind("<1>", lambda event:self.set(28))
+        self.pic28.place(rely=0.357, relx=0.538)
+
+        self.photo29=PhotoImage(file='E29.pbm')
+        self.pic29=Label(self, image=self.photo29, bd=0)
+        self.pic29.bind("<1>", lambda event:self.set(29))
+        self.pic29.place(rely=0.3637, relx=0.56788)
+
+        self.photo30a=PhotoImage(file='E30a.pbm')
+        self.pic30a=Label(self, image=self.photo30a, bd=0)
+        self.pic30a.bind("<1>", lambda event:self.set(30))
+        self.pic30a.place(rely=0.4148, relx=0.446)
+        
+        self.photo30b=PhotoImage(file='E30b.pbm')
+        self.pic30b=Label(self, image=self.photo30b, bd=0)
+        self.pic30b.bind("<1>", lambda event:self.set(30))
+        self.pic30b.place(rely=0.393, relx=0.466)
+
+        self.photo31=PhotoImage(file='E31.pbm')
+        self.pic31=Label(self, image=self.photo31, bd=0)
+        self.pic31.bind("<1>", lambda event:self.set(31))
+        self.pic31.place(rely=0.3995, relx=0.5)
+
+        self.photo32=PhotoImage(file='E32.pbm')
+        self.pic32=Label(self, image=self.photo32, bd=0)
+        self.pic32.bind("<1>", lambda event:self.set(32))
+        self.pic32.place(rely=0.385, relx=0.521)
+
+        self.photo33=PhotoImage(file='E33.pbm')
+        self.pic33=Label(self, image=self.photo33, bd=0)
+        self.pic33.bind("<1>", lambda event:self.set(33))
+        self.pic33.place(rely=0.424, relx=0.4325)
+
+        self.photo34=PhotoImage(file='E34.pbm')
+        self.pic34=Label(self, image=self.photo34, bd=0)
+        self.pic34.bind("<1>", lambda event:self.set(34))
+        self.pic34.place(rely=0.403, relx=0.546)
+
+        self.photo35=PhotoImage(file='E35.pbm')
+        self.pic35=Label(self, image=self.photo35, bd=0)
+        self.pic35.bind("<1>", lambda event:self.set(35))
+        self.pic35.place(rely=0.4394, relx=0.5342)
+
+        self.photo36=PhotoImage(file='E36.pbm')
+        self.pic36=Label(self, image=self.photo36, bd=0)
+        self.pic36.bind("<1>", lambda event:self.set(36))
+        self.pic36.place(rely=0.43, relx=0.559)
+
+        self.photo37=PhotoImage(file='E37.pbm')
+        self.pic37=Label(self, image=self.photo37, bd=0)
+        self.pic37.bind("<1>", lambda event:self.set(37))
+        self.pic37.place(rely=0.52, relx=0.444)
+
+        self.photo38a=PhotoImage(file='E38a.pbm')
+        self.pic38a=Label(self, image=self.photo38a, bd=0)
+        self.pic38a.bind("<1>", lambda event:self.set(38))
+        self.pic38a.place(rely=0.445, relx=0.515)
+
+        self.photo38b=PhotoImage(file='E38b.pbm')
+        self.pic38b=Label(self, image=self.photo38b, bd=0)
+        self.pic38b.bind("<1>", lambda event:self.set(38))
+        self.pic38b.place(rely=0.474, relx=0.483)
+
+        self.photo38c=PhotoImage(file='E38c.pbm')
+        self.pic38c=Label(self, image=self.photo38c, bd=0)
+        self.pic38c.bind("<1>", lambda event:self.set(38))
+        self.pic38c.place(rely=0.5491, relx=0.4723)
+
+        self.photo39=PhotoImage(file='E39.pbm')
+        self.pic39=Label(self, image=self.photo39, bd=0)
+        self.pic39.bind("<1>", lambda event:self.set(39))
+        self.pic39.place(rely=0.51, relx=0.461)
+
+        self.photo40=PhotoImage(file='E40.pbm')
+        self.pic40=Label(self, image=self.photo40, bd=0)
+        self.pic40.bind("<1>", lambda event:self.set(40))
+        self.pic40.place(rely=0.555, relx=0.435)
+
+        self.photo41=PhotoImage(file='E41.pbm')
+        self.pic41=Label(self, image=self.photo41, bd=0)
+        self.pic41.bind("<1>", lambda event:self.set(41))
+        self.pic41.place(rely=0.566, relx=0.459)
+
+        self.photo42=PhotoImage(file='E42.pbm')
+        self.pic42=Label(self, image=self.photo42, bd=0)
+        self.pic42.bind("<1>", lambda event:self.set(42))
+        self.pic42.place(rely=0.571, relx=0.471)
+
+        self.photo43a=PhotoImage(file='E43a.pbm')
+        self.pic43a=Label(self, image=self.photo43a, bd=0)
+        self.pic43a.bind("<1>", lambda event:self.set(43))
+        self.pic43a.place(rely=0.58, relx=0.494)
+
+        self.photo43b=PhotoImage(file='E43b.pbm')
+        self.pic43b=Label(self, image=self.photo43b, bd=0)
+        self.pic43b.bind("<1>", lambda event:self.set(43))
+        self.pic43b.place(rely=0.53, relx=0.516)
+
+        self.photo44=PhotoImage(file='E44.pbm')
+        self.pic44=Label(self, image=self.photo44, bd=0)
+        self.pic44.bind("<1>", lambda event:self.set(44))
+        self.pic44.place(rely=0.592, relx=0.433)
+
+        self.photo45a=PhotoImage(file='E45a.pbm')
+        self.pic45a=Label(self, image=self.photo45a, bd=0)
+        self.pic45a.bind("<1>", lambda event:self.set(45))
+        self.pic45a.place(rely=0.63, relx=0.457)
+
+        self.photo45b=PhotoImage(file='E45b.pbm')
+        self.pic45b=Label(self, image=self.photo45b, bd=0)
+        self.pic45b.bind("<1>", lambda event:self.set(45))
+        self.pic45b.place(rely=0.674, relx=0.4195)
+
+        self.photo46=PhotoImage(file='E46.pbm')
+        self.pic46=Label(self, image=self.photo46, bd=0)
+        self.pic46.bind("<1>", lambda event:self.set(46))
+        self.pic46.place(rely=0.642, relx=0.492)
+        
+        self.photo47=PhotoImage(file='E47.pbm')
+        self.pic47=Label(self, image=self.photo47, bd=0)
+        self.pic47.bind("<1>", lambda event:self.set(47))
+        self.pic47.place(rely=0.81, relx=0.483)
+        
+        self.photo48=PhotoImage(file='E48.pbm')
+        self.pic48=Label(self, image=self.photo48, bd=0)
+        self.pic48.bind("<1>", lambda event:self.set(48))
+        self.pic48.place(rely=0.801, relx=0.504)
 
     def set(self, temp):
         if self.startVar.get() == "":
