@@ -427,9 +427,7 @@ class A_star():
 			curr = self.opened.get()
 			
 			if curr == goal:
-				if type1 == 1:
-					return self.path[curr], self.traverse(start, goal, self.previous)
-				return self.traverse(start, goal, self.previous)
+				return self.path[curr], self.traverse(start, goal, self.previous)
 
 			else:
 				self.generate(curr, maps)
