@@ -1,15 +1,18 @@
 line_number = 48
 trains = {1:[17,33,37,16,18],2:[19,25,32,38,41],3:[30,24,26,27]}
+short = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,18,19,20,21,23,24,25,26,27,28,29,31,32,34,35,36,37,39,40,41,42,44]
+medium = [17,22,30,33,46,47,48]
+long1 = [13,38,43,45]
 
 class path():
-	def __init__(self, train1, connection, line):
+	def __init__(self, train1, connection, line, type1):
 		self.types = {}
 		self.connections = connection
 		self.line = line
+		self.type = type1
 		self.initialize(train1)
 
 	def initialize(self, train1):
-		self.types[100] = 0
 		self.types[30] = 40
 
 		if train1 == 1:
@@ -26,6 +29,9 @@ class path():
 
 	def get_line(self):
 		return self.line
+
+	def get_type(self):
+		return self.type
 
 class code():
 	def __init__(self):
@@ -365,7 +371,12 @@ class code():
 				connection.append(46)
 				connection.append(47)
 
-			self.map.append(path(train1, connection, line))
+			if line in short:
+				self.map.append(path(train1, connection, line, 1))
+			elif line in medium:
+				self.map.append(path(train1, connection, line, 2))
+			elif line in long1:
+				self.map.append(path(train1, connection, line, 3))
 
 
 	def set_start(self, temp):
@@ -416,13 +427,14 @@ class A_star():
 			curr = self.opened.get()
 			
 			if curr == goal:
-				print "cost:", self.path[curr], "steps:", x
+				if type1 == 1:
+					print "cost:", self.path[curr]
 				return self.path[curr], x, self.traverse(start, goal, self.previous)
 
 			else:
 				self.generate(curr, maps)
 				if type1 == 0:
-					cost = self.path[curr] + 100
+					cost = self.path[curr] + curr.get_type()
 				for move in self.moves:
 					if type1 == 1:
 						temp = move.get_types()
@@ -458,6 +470,6 @@ class A_star():
 
 a = A_star()
 b = code()
-b.set_start(1)
-b.set_end(48)
-a.algorithm(b.get_start(), b.get_end(), b, 1, None)
+b.set_start(48)
+b.set_end(1)
+a.algorithm(b.get_start(), b.get_end(), b, 0, None)
