@@ -1,6 +1,5 @@
-line_number = 0
-jeepneys = []
-trains = []
+line_number = 49
+trains = {1:[17,33,39,16,18],2:[19,25,34,38,42],3:[31,26,27,28]}
 
 class transport():
 	def __init__(self):
@@ -20,19 +19,19 @@ class transport():
 		self.cost = temp
 
 def path():
-	def __init__(self, jeep1, train1):
+	def __init__(self, train1):
 		self.types = []
-		self.initialize(jeep1, train1)
+		self.connections = []
+		self.initialize(train1)
 
-	def initialize(self, jeep1, train1):
+	def initialize(self, train1):
 		bike = transport()
 		bike.set_cost(0)
 		bike.set_time(100)
 
-		if jeep1 == 1:
-			jeep = transport()
-			jeep.set_cost(7.50)
-			jeep.set_time(70)
+		jeep = transport()
+		jeep.set_cost(7.50)
+		jeep.set_time(70)
 		
 		taxi = transport()
 		taxi.set_cost(40)
@@ -48,6 +47,9 @@ def path():
 		self.types.append(taxi)
 		self.types.append(train)
 
+	def add_connection(self, temp):
+		self.connections.append(temp)
+
 class code():
 	def __init__(self):
 		self.map = []
@@ -55,20 +57,25 @@ class code():
 		self.end = ""
 
 	def initialize(self):
-		for line in range(line_number):
-			jeep1 = 0
+		for line in range(1,line_number+1):
 			train1 = 0
-			if line in jeepneys:
-				jeep1 = 1
-			if line in trains:
-				train1 = 1
-			self.map.append(path(jeep1, train1))
+			for x in range(1,4):
+				if line in trains[x]:
+					train1 = 1
+					break
+			self.map.append(path(train1))
 
 	def set_start(self, temp):
 		self.start = temp
 
 	def set_end(self, temp):
 		self.end = temp
+
+	def get_start(self):
+		return self.start
+
+	def get_end(self):
+		return self.end
 
 class priority_queue():
     def __init__(self):
@@ -117,3 +124,9 @@ class A_star():
 						self.opened.put(move, cost + self.heuristic[move])
 
 		print("No solution")
+
+a = A_star()
+b = code()
+b.set_start(None)
+b.set_end(None)
+a.algorithm(b.get_start(), b.get_end(), None)
