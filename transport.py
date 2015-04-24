@@ -70,4 +70,50 @@ class code():
 	def set_end(self, temp):
 		self.end = temp
 
-	
+class priority_queue():
+    def __init__(self):
+        self.elements = {}
+    
+    def put(self, node, cost):
+        self.elements[node] = cost
+   
+    def get(self):
+        temp = min(cost[1] for cost in self.elements.items())
+        for x in self.elements.keys():
+            if self.elements[x] == temp:
+                self.elements.pop(x)
+                return x
+        return None
+
+class A_star():
+	def __init__(self):
+		self.opened = priority_queue()
+		self.previous = {}
+		self.path = {}
+		self.heuristic = {}
+		self.moves = []
+
+	def algorithm(self, start, goal, heuristic):
+		self.previous[start] = None
+		self.path[start] = 0
+		self.heuristic[start] = heuristic(start, goal)
+		self.opened.put(start, 0)
+		
+		for x in xrange(10000000):
+			curr = self.opened.get()
+
+			if curr == goal:
+				print "cost:", self.path[curr], "steps:", x
+				return self.path[curr], x, self.traverse(start, goal, self.previous)
+
+			else:
+				self.generate(curr)
+				cost = self.path[curr] + 1
+				for move in self.moves:
+					if move not in self.path or cost < self.path[move]:
+						self.heuristic[move] = heuristic(move, goal) + cost
+						self.path[move] = cost
+						self.previous[move] = curr
+						self.opened.put(move, cost + self.heuristic[move])
+
+		print("No solution")
