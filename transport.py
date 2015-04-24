@@ -1,4 +1,4 @@
-line_number = 47
+line_number = 48
 trains = {1:[17,33,37,16,18],2:[19,25,32,38,41],3:[30,24,26,27]}
 
 class transport():
@@ -50,11 +50,14 @@ class path():
 	def add_connection(self, temp):
 		self.connections.append(temp)
 
+	def get_connection(self):
+		return self.connections
+
 class code():
 	def __init__(self):
 		self.map = []
-		self.start = ""
-		self.end = ""
+		self.start = 0
+		self.end = 0
 		self.initialize()
 
 	def initialize(self):
@@ -72,21 +75,23 @@ class code():
 
 			elif line == 2:
 				connection.append(1)
-				connection.append(7)
 				connection.append(3)
+				connection.append(4)
+				connection.append(7)
 				connection.append(8)
 
 			elif line == 3:
 				connection.append(2)
-				connection.append(8)
 				connection.append(4)
+				connection.append(8)
 
 			elif line == 4:
+				connection.append(2)
 				connection.append(3)
+				connection.append(5)
 				connection.append(8)
 				connection.append(9)
-				connection.append(11)
-				connection.append(15)
+				connection.append(11)			
 
 			elif line == 5:
 				connection.append(4)
@@ -104,6 +109,7 @@ class code():
 				connection.append(2)
 				connection.append(15)
 				connection.append(16)
+				connection.append(17)
 
 			elif line == 8:
 				connection.append(2)
@@ -115,9 +121,9 @@ class code():
 			elif line == 9:
 				connection.append(4)
 				connection.append(5)
+				connection.append(8)
 				connection.append(11)
 				connection.append(14)
-				connection.append(9)
 
 			elif line == 10:
 				connection.append(11)
@@ -165,6 +171,7 @@ class code():
 				connection.append(18)
 
 			elif line == 17:
+				connection.append(7)
 				connection.append(15)
 				connection.append(16)
 				connection.append(22)
@@ -198,6 +205,7 @@ class code():
 				connection.append(20)
 				connection.append(26)
 				connection.append(27)
+				connection.append(28)
 
 			elif line == 22:
 				connection.append(17)
@@ -343,7 +351,7 @@ class code():
 				connection.append(39)
 				connection.append(41)
 				connection.append(43)
-				connection.append(44)
+				connection.append(45)
 				connection.append(46)
 
 			elif line == 43:
@@ -387,10 +395,10 @@ class code():
 
 
 	def set_start(self, temp):
-		self.start = temp
+		self.start = self.map[temp-1]
 
 	def set_end(self, temp):
-		self.end = temp
+		self.end = self.map[temp-1]
 
 	def get_start(self):
 		return self.start
@@ -424,7 +432,7 @@ class A_star():
 		self.heuristic = {}
 		self.moves = []
 
-	def algorithm(self, start, goal, heuristic):
+	def algorithm(self, start, goal, maps,heuristic):
 		self.previous[start] = None
 		self.path[start] = 0
 		#self.heuristic[start] = heuristic(start, goal)
@@ -432,60 +440,39 @@ class A_star():
 		
 		for x in xrange(10000000):
 			curr = self.opened.get()
-
+			
 			if curr == goal:
 				print "cost:", self.path[curr], "steps:", x
 				return self.path[curr], x, self.traverse(start, goal, self.previous)
 
 			else:
-				self.generate(curr)
+				self.generate(curr, maps)
 				cost = self.path[curr] + 1
 				for move in self.moves:
+					#print move.get_connection()
 					if move not in self.path or cost < self.path[move]:
 						#self.heuristic[move] = heuristic(move, goal) + cost
 						self.path[move] = cost
 						self.previous[move] = curr
-						self.opened.put(move, cost + self.heuristic[move])
+						#self.opened.put(move, cost + self.heuristic[move])
+						self.opened.put(move, cost)
 
 		print("No solution")
 
 	def traverse(self, start, goal, previous):
 		return
 
-	def generate(self, start, mode=0, extra=None):
+	def generate(self, start, maps, mode=0, extra=None):
 		self.moves = []
-		i = start.index("0")
-
-		if i - 3 >= 0:
-			a = list(start)
-			a[i],a[i-3] = a[i-3],a[i]
-			self.moves.append("".join(a))
-			if mode == 1 and extra == "".join(a):
-				return "DOWN"
-
-		if i + 3 < 9:
-			a = list(start)
-			a[i],a[i+3] = a[i+3],a[i]
-			self.moves.append("".join(a))
-			if mode == 1 and extra == "".join(a):
-				return "UP"
-
-		if i in [1, 2, 4, 5, 7, 8]:
-			a = list(start)
-			a[i],a[i-1] = a[i-1],a[i]
-			self.moves.append("".join(a))
-			if mode == 1 and extra == "".join(a):
-				return "RIGHT"
-
-		if i in [0, 1, 3, 4, 6, 7]:
-			a = list(start)
-			a[i],a[i+1] = a[i+1],a[i]
-			self.moves.append("".join(a))
-			if mode == 1 and extra == "".join(a):
-				return "LEFT"
+		temp = start.get_connection()
+		#temp = temp[::-1]
+		for x in temp:
+			if x-1 not in self.path:
+				self.moves.append(maps.get_map(x-1))
+			#print maps.get_map(x).get_connection()
 
 a = A_star()
 b = code()
 b.set_start(1)
-b.set_end(2)
-a.algorithm(b.get_map(b.get_start()), b.get_map(b.get_end()), None)
+b.set_end(4)
+a.algorithm(b.get_start(), b.get_end(), b, None)
