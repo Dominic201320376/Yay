@@ -71,7 +71,7 @@ class GUI(Tk):
         self.cheapcostoutput.place(relx=0.15, rely=0.50)
 
         self.frame = Frame(self, width=500, height=500, bg="#c6c6c4")
-        self.frame.place(relx=0.75, rely=0.18)
+        self.frame.place(relx=0.70, rely=0.18)
 
         self.legendHead = Label(self.frame, text="Legend:", font=("Helvetica", "12"), fg="#d92d33", bg="#c6c6c4")
         self.legendHead.grid(row=0)
@@ -120,6 +120,15 @@ class GUI(Tk):
 
         temp = Label(self.frame, text="20", font=("Helvetica", "12"), bg="#c6c6c4")
         temp.grid(row=4, column=3)
+
+        temp = Label(self.frame, text="", bg="#c6c6c4")
+        temp.grid(row=5, column=0)
+
+        temp = Label(self.frame, text="Note: trains are only available on certain segments,", font=("Helvetica", "10"), bg="#c6c6c4")
+        temp.grid(row=6, column=0, columnspan=4)
+
+        temp = Label(self.frame, text="those in the map not colored red.", font=("Helvetica", "10"), bg="#c6c6c4")
+        temp.grid(row=7, column=0, columnspan=3)
 
         # Nodes 1-48.
 
