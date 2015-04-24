@@ -439,9 +439,9 @@ class A_star():
 					if type1 == 1:
 						temp = move.get_types()
 						try:
-							cost = self.path[curr] + temp[20]
+							cost = self.path[curr] + temp[20] + curr.get_type()
 						except:
-							cost = self.path[curr] + temp[30]
+							cost = self.path[curr] + temp[30]+ curr.get_type()
 					if move not in self.path or cost < self.path[move]:
 						#self.heuristic[move] = heuristic(move, goal) + cost
 						self.path[move] = cost
@@ -470,6 +470,6 @@ class A_star():
 
 a = A_star()
 b = code()
-b.set_start(48)
-b.set_end(1)
+b.set_start(1)
+b.set_end(29)
 a.algorithm(b.get_start(), b.get_end(), b, 0, None)
