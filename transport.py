@@ -1,5 +1,5 @@
-line_number = 49
-trains = {1:[17,33,39,16,18],2:[19,25,34,38,42],3:[31,26,27,28]}
+line_number = 47
+trains = {1:[17,33,37,16,18],2:[19,25,32,38,41],3:[30,24,26,27]}
 
 class transport():
 	def __init__(self):
@@ -18,10 +18,10 @@ class transport():
 	def set_cost(self, temp):
 		self.cost = temp
 
-def path():
-	def __init__(self, train1):
+class path():
+	def __init__(self, train1, connection):
 		self.types = []
-		self.connections = []
+		self.connections = connection
 		self.initialize(train1)
 
 	def initialize(self, train1):
@@ -41,12 +41,12 @@ def path():
 			train = transport()
 			train.set_cost(20)
 			train.set_time(20)
+			self.types.append(train)
 
 		self.types.append(bike)
 		self.types.append(jeep)
 		self.types.append(taxi)
-		self.types.append(train)
-
+		
 	def add_connection(self, temp):
 		self.connections.append(temp)
 
@@ -55,6 +55,7 @@ class code():
 		self.map = []
 		self.start = ""
 		self.end = ""
+		self.initialize()
 
 	def initialize(self):
 		for line in range(1,line_number+1):
@@ -63,7 +64,327 @@ class code():
 				if line in trains[x]:
 					train1 = 1
 					break
-			self.map.append(path(train1))
+			connection = []
+
+			if line == 1:
+				connection.append(2)
+				connection.append(7)
+
+			elif line == 2:
+				connection.append(1)
+				connection.append(7)
+				connection.append(3)
+				connection.append(8)
+
+			elif line == 3:
+				connection.append(2)
+				connection.append(8)
+				connection.append(4)
+
+			elif line == 4:
+				connection.append(3)
+				connection.append(8)
+				connection.append(9)
+				connection.append(11)
+				connection.append(15)
+
+			elif line == 5:
+				connection.append(4)
+				connection.append(6)
+				connection.append(9)
+				connection.append(11)
+				connection.append(13)
+
+			elif line == 6:
+				connection.append(5)
+				connection.append(13)
+
+			elif line == 7:
+				connection.append(1)
+				connection.append(2)
+				connection.append(15)
+				connection.append(16)
+
+			elif line == 8:
+				connection.append(2)
+				connection.append(3)
+				connection.append(4)
+				connection.append(9)	
+				connection.append(14)
+
+			elif line == 9:
+				connection.append(4)
+				connection.append(5)
+				connection.append(11)
+				connection.append(14)
+				connection.append(9)
+
+			elif line == 10:
+				connection.append(11)
+				connection.append(12)
+				connection.append(18)
+				connection.append(19)
+
+			elif line == 11:
+				connection.append(4)
+				connection.append(5)
+				connection.append(9)
+				connection.append(10)
+				connection.append(12)
+
+			elif line == 12:
+				connection.append(10)
+				connection.append(11)
+				connection.append(13)
+				connection.append(20)
+				connection.append(21)
+
+			elif line == 13:
+				connection.append(5)
+				connection.append(6)
+				connection.append(12)
+				connection.append(20)
+				connection.append(21)
+
+			elif line == 14:
+				connection.append(8)
+				connection.append(9)
+				connection.append(16)
+				connection.append(18)
+
+			elif line == 15:
+				connection.append(7)
+				connection.append(16)
+				connection.append(17)
+
+			elif line == 16:
+				connection.append(7)
+				connection.append(14)
+				connection.append(15)
+				connection.append(17)
+				connection.append(18)
+
+			elif line == 17:
+				connection.append(15)
+				connection.append(16)
+				connection.append(22)
+				connection.append(30)
+				connection.append(33)
+
+			elif line == 18:
+				connection.append(10)
+				connection.append(14)
+				connection.append(16)
+				connection.append(19)
+
+			elif line == 19:
+				connection.append(10)
+				connection.append(18)
+				connection.append(20)
+				connection.append(22)
+				connection.append(25)
+
+			elif line == 20:
+				connection.append(12)
+				connection.append(13)
+				connection.append(19)
+				connection.append(21)
+				connection.append(22)
+				connection.append(25)
+
+			elif line == 21:
+				connection.append(12)
+				connection.append(13)
+				connection.append(20)
+				connection.append(26)
+				connection.append(27)
+
+			elif line == 22:
+				connection.append(17)
+				connection.append(19)
+				connection.append(20)
+				connection.append(25)
+				connection.append(30)
+				connection.append(33)
+
+			elif line == 23:
+				connection.append(27)
+				connection.append(28)
+				connection.append(29)
+				connection.append(34)
+
+			elif line == 24:
+				connection.append(25)
+				connection.append(26)
+				connection.append(30)
+				connection.append(31)
+				connection.append(32)
+
+			elif line == 25:
+				connection.append(19)
+				connection.append(20)
+				connection.append(22)
+				connection.append(24)
+				connection.append(26)
+				connection.append(32)
+
+			elif line == 26:
+				connection.append(21)
+				connection.append(24)
+				connection.append(25)
+				connection.append(27)
+				connection.append(28)
+				connection.append(32)
+				
+			elif line == 27:
+				connection.append(21)
+				connection.append(23)
+				connection.append(26)
+				connection.append(28)
+				connection.append(29)
+
+			elif line == 28:
+				connection.append(21)
+				connection.append(23)
+				connection.append(26)
+				connection.append(27)
+				connection.append(34)
+
+			elif line == 29:
+				connection.append(23)
+				connection.append(27)
+
+			elif line == 30:
+				connection.append(17)
+				connection.append(22)
+				connection.append(24)
+				connection.append(31)
+				connection.append(33)
+
+			elif line == 31:
+				connection.append(24)
+				connection.append(30)
+				connection.append(32)
+				connection.append(35)
+				connection.append(38)	
+
+			elif line == 32:
+				connection.append(24)
+				connection.append(25)
+				connection.append(26)
+				connection.append(31)
+				connection.append(35)
+				connection.append(38)
+
+			elif line == 33:
+				connection.append(17)
+				connection.append(22)
+				connection.append(30)
+				connection.append(37)
+				connection.append(39)
+
+			elif line == 34:
+				connection.append(23)
+				connection.append(28)
+				connection.append(35)
+				connection.append(36)
+				connection.append(43)
+
+			elif line == 35:
+				connection.append(31)
+				connection.append(32)
+				connection.append(34)
+				connection.append(36)
+				connection.append(38)
+				connection.append(43)
+
+			elif line == 36:
+				connection.append(34)
+				connection.append(35)
+				connection.append(43)
+
+			elif line == 37:
+				connection.append(33)
+				connection.append(39)
+				connection.append(40)
+				connection.append(41)
+				connection.append(44)
+
+			elif line == 38:
+				connection.append(31)
+				connection.append(32)
+				connection.append(35)
+				connection.append(39)
+				connection.append(41)
+				connection.append(42)
+
+			elif line == 39:
+				connection.append(33)
+				connection.append(37)
+				connection.append(38)
+				connection.append(41)
+				connection.append(42)
+
+			elif line == 40:
+				connection.append(37)
+				connection.append(41)
+				connection.append(44)
+
+			elif line == 41:
+				connection.append(37)
+				connection.append(38)
+				connection.append(39)
+				connection.append(40)
+				connection.append(42)
+				connection.append(44)
+
+			elif line == 42:
+				connection.append(38)
+				connection.append(39)
+				connection.append(41)
+				connection.append(43)
+				connection.append(44)
+				connection.append(46)
+
+			elif line == 43:
+				connection.append(34)
+				connection.append(35)
+				connection.append(36)
+				connection.append(42)
+				connection.append(45)
+				connection.append(46)
+
+			elif line == 44:
+				connection.append(37)
+				connection.append(40)
+				connection.append(41)
+
+			elif line == 45:
+				connection.append(42)
+				connection.append(43)
+				connection.append(46)
+				connection.append(47)
+				connection.append(48)
+
+			elif line == 46:
+				connection.append(42)
+				connection.append(43)
+				connection.append(45)
+				connection.append(47)
+				connection.append(48)
+
+			elif line == 47:
+				connection.append(45)
+				connection.append(46)
+				connection.append(48)
+
+			elif line == 48:
+				connection.append(45)
+				connection.append(46)
+				connection.append(47)
+
+			self.map.append(path(train1, connection))
+
 
 	def set_start(self, temp):
 		self.start = temp
@@ -77,20 +398,23 @@ class code():
 	def get_end(self):
 		return self.end
 
+	def get_map(self, temp):
+		return self.map[temp]
+
 class priority_queue():
-    def __init__(self):
-        self.elements = {}
-    
-    def put(self, node, cost):
-        self.elements[node] = cost
+	def __init__(self):
+		self.elements = {}
+	
+	def put(self, node, cost):
+		self.elements[node] = cost
    
-    def get(self):
-        temp = min(cost[1] for cost in self.elements.items())
-        for x in self.elements.keys():
-            if self.elements[x] == temp:
-                self.elements.pop(x)
-                return x
-        return None
+	def get(self):
+		temp = min(cost[1] for cost in self.elements.items())
+		for x in self.elements.keys():
+			if self.elements[x] == temp:
+				self.elements.pop(x)
+				return x
+		return None
 
 class A_star():
 	def __init__(self):
@@ -103,7 +427,7 @@ class A_star():
 	def algorithm(self, start, goal, heuristic):
 		self.previous[start] = None
 		self.path[start] = 0
-		self.heuristic[start] = heuristic(start, goal)
+		#self.heuristic[start] = heuristic(start, goal)
 		self.opened.put(start, 0)
 		
 		for x in xrange(10000000):
@@ -118,15 +442,50 @@ class A_star():
 				cost = self.path[curr] + 1
 				for move in self.moves:
 					if move not in self.path or cost < self.path[move]:
-						self.heuristic[move] = heuristic(move, goal) + cost
+						#self.heuristic[move] = heuristic(move, goal) + cost
 						self.path[move] = cost
 						self.previous[move] = curr
 						self.opened.put(move, cost + self.heuristic[move])
 
 		print("No solution")
 
+	def traverse(self, start, goal, previous):
+		return
+
+	def generate(self, start, mode=0, extra=None):
+		self.moves = []
+		i = start.index("0")
+
+		if i - 3 >= 0:
+			a = list(start)
+			a[i],a[i-3] = a[i-3],a[i]
+			self.moves.append("".join(a))
+			if mode == 1 and extra == "".join(a):
+				return "DOWN"
+
+		if i + 3 < 9:
+			a = list(start)
+			a[i],a[i+3] = a[i+3],a[i]
+			self.moves.append("".join(a))
+			if mode == 1 and extra == "".join(a):
+				return "UP"
+
+		if i in [1, 2, 4, 5, 7, 8]:
+			a = list(start)
+			a[i],a[i-1] = a[i-1],a[i]
+			self.moves.append("".join(a))
+			if mode == 1 and extra == "".join(a):
+				return "RIGHT"
+
+		if i in [0, 1, 3, 4, 6, 7]:
+			a = list(start)
+			a[i],a[i+1] = a[i+1],a[i]
+			self.moves.append("".join(a))
+			if mode == 1 and extra == "".join(a):
+				return "LEFT"
+
 a = A_star()
 b = code()
-b.set_start(None)
-b.set_end(None)
-a.algorithm(b.get_start(), b.get_end(), None)
+b.set_start(1)
+b.set_end(2)
+a.algorithm(b.get_map(b.get_start()), b.get_map(b.get_end()), None)
