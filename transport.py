@@ -1,57 +1,31 @@
 line_number = 48
 trains = {1:[17,33,37,16,18],2:[19,25,32,38,41],3:[30,24,26,27]}
 
-class transport():
-	def __init__(self):
-		self.time = 0
-		self.cost = 0
-
-	def get_cost(self):
-		return self.cost
-
-	def get_time(self):
-		return self.time
-
-	def set_time(self, temp):
-		self.time = temp
-
-	def set_cost(self, temp):
-		self.cost = temp
-
 class path():
-	def __init__(self, train1, connection):
-		self.types = []
+	def __init__(self, train1, connection, line):
+		self.types = {}
 		self.connections = connection
+		self.line = line
 		self.initialize(train1)
 
 	def initialize(self, train1):
-		bike = transport()
-		bike.set_cost(0)
-		bike.set_time(100)
-
-		jeep = transport()
-		jeep.set_cost(7.50)
-		jeep.set_time(70)
-		
-		taxi = transport()
-		taxi.set_cost(40)
-		taxi.set_time(30)
+		self.types[100] = 0
+		self.types[30] = 40
 
 		if train1 == 1:
-			train = transport()
-			train.set_cost(20)
-			train.set_time(20)
-			self.types.append(train)
-
-		self.types.append(bike)
-		self.types.append(jeep)
-		self.types.append(taxi)
+			self.types[20] = 20
 		
 	def add_connection(self, temp):
 		self.connections.append(temp)
 
 	def get_connection(self):
 		return self.connections
+
+	def get_types(self):
+		return self.types
+
+	def get_line(self):
+		return self.line
 
 class code():
 	def __init__(self):
@@ -391,7 +365,7 @@ class code():
 				connection.append(46)
 				connection.append(47)
 
-			self.map.append(path(train1, connection))
+			self.map.append(path(train1, connection, line))
 
 
 	def set_start(self, temp):
@@ -432,7 +406,7 @@ class A_star():
 		self.heuristic = {}
 		self.moves = []
 
-	def algorithm(self, start, goal, maps,heuristic):
+	def algorithm(self, start, goal, maps, type1, heuristic):
 		self.previous[start] = None
 		self.path[start] = 0
 		#self.heuristic[start] = heuristic(start, goal)
@@ -447,9 +421,15 @@ class A_star():
 
 			else:
 				self.generate(curr, maps)
-				cost = self.path[curr] + 1
+				if type1 == 0:
+					cost = self.path[curr] + 100
 				for move in self.moves:
-					#print move.get_connection()
+					if type1 == 1:
+						temp = move.get_types()
+						try:
+							cost = self.path[curr] + temp[20]
+						except:
+							cost = self.path[curr] + temp[30]
 					if move not in self.path or cost < self.path[move]:
 						#self.heuristic[move] = heuristic(move, goal) + cost
 						self.path[move] = cost
@@ -460,19 +440,24 @@ class A_star():
 		print("No solution")
 
 	def traverse(self, start, goal, previous):
-		return
+		curr = goal
+		x = [curr]
+		while curr != start:
+			curr = previous[curr]
+			x.append(curr)
+		x.reverse()
+
+		for a in x:
+			print a.get_line()
 
 	def generate(self, start, maps, mode=0, extra=None):
 		self.moves = []
 		temp = start.get_connection()
-		#temp = temp[::-1]
 		for x in temp:
-			if x-1 not in self.path:
-				self.moves.append(maps.get_map(x-1))
-			#print maps.get_map(x).get_connection()
+			self.moves.append(maps.get_map(x-1))
 
 a = A_star()
 b = code()
 b.set_start(1)
-b.set_end(4)
-a.algorithm(b.get_start(), b.get_end(), b, None)
+b.set_end(48)
+a.algorithm(b.get_start(), b.get_end(), b, 1, None)
