@@ -380,10 +380,10 @@ class code():
 
 
 	def set_start(self, temp):
-		self.start = self.map[temp-1]
+		self.start = self.map[int(temp)-1]
 
 	def set_end(self, temp):
-		self.end = self.map[temp-1]
+		self.end = self.map[int(temp)-1]
 
 	def get_start(self):
 		return self.start
@@ -392,7 +392,7 @@ class code():
 		return self.end
 
 	def get_map(self, temp):
-		return self.map[temp]
+		return self.map[int(temp)]
 
 class priority_queue():
 	def __init__(self):
@@ -428,8 +428,8 @@ class A_star():
 			
 			if curr == goal:
 				if type1 == 1:
-					print "cost:", self.path[curr]
-				return self.path[curr], x, self.traverse(start, goal, self.previous)
+					return self.path[curr], self.traverse(start, goal, self.previous)
+				return self.traverse(start, goal, self.previous)
 
 			else:
 				self.generate(curr, maps)
@@ -459,17 +459,14 @@ class A_star():
 			x.append(curr)
 		x.reverse()
 
+		b = []
 		for a in x:
-			print a.get_line()
+			b.append(a.get_line())
+
+		return b
 
 	def generate(self, start, maps, mode=0, extra=None):
 		self.moves = []
 		temp = start.get_connection()
 		for x in temp:
 			self.moves.append(maps.get_map(x-1))
-
-a = A_star()
-b = code()
-b.set_start(1)
-b.set_end(29)
-a.algorithm(b.get_start(), b.get_end(), b, 0, None)
