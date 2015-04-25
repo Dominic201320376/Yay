@@ -11,13 +11,14 @@ class GUI(Tk):
     def main(self):
         self.geometry('1200x700-50-50')
         self.resizable(False, False)
-        self.title('Yay')
+        self.title('HIGHWAYS')
 
         self.image=PhotoImage(file='RoadMap.pbm')
         self.bgimage=Label(image=self.image)
         self.bgimage.place(x=0, y=0, relwidth=1, relheight=1)
 
-        self.tk.call('wm', 'iconphoto', self._w, self.image)
+        self.logo=PhotoImage(file='BasicLogo.pbm')
+        self.tk.call('wm', 'iconphoto', self._w, self.logo)
 
         self.setedge()
     def setedge(self):
@@ -26,126 +27,109 @@ class GUI(Tk):
         self.header.place(relx=0.02, rely=0.01)
 
         self.start=Label(self, text='Start:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.start.place(relx=0.05, rely=0.18)
+        self.start.place(relx=0.05, rely=0.2)
 
         self.startVar = StringVar()        
         self.startinput=Label(self, text=self.startVar.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.startinput.place(relx=0.1, rely=0.18)
-        self.startbutton=Button(self, text='Clear', command=self.clearStart)
-        self.startbutton.place(relx=0.15, rely=0.18)
+        self.startinput.place(relx=0.1, rely=0.2)
+        self.startbutton=Button(self, text='Clear', command=self.clearStart, font=('Helvetica', "12"), bg='#d92d33', fg='#c6c6c4')
+        self.startbutton.place(relx=0.15, rely=0.2)
 
         self.end=Label(self, text='End:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.end.place(relx=0.05, rely=0.22)
+        self.end.place(relx=0.05, rely=0.25)
 
         self.endVar = StringVar()
         self.endinput=Label(self, text=self.endVar.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.endinput.place(relx=0.1, rely=0.22)
-        self.endbutton=Button(self, text='Clear', command=self.clearEnd)
-        self.endbutton.place(relx=0.15, rely=0.22)
+        self.endinput.place(relx=0.1, rely=0.25)
+        self.endbutton=Button(self, text='Clear', command=self.clearEnd, font=('Helvetica', "12"), bg='#d92d33', fg='#c6c6c4')
+        self.endbutton.place(relx=0.15, rely=0.25)
 
-        self.submit = Button(self, text="Submit", command=self.submit)
-        self.submit.place(relx=0.15, rely=0.26)
+        self.submit = Button(self, text="     Submit     ", command=self.submit, font=('Helvetica', "18"), bg='#d92d33', fg='#c6c6c4')
+        self.submit.place(relx=0.052, rely=0.305)
 
         self.quick=Label(self, text='Quickest Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.quick.place(relx=0.05, rely=0.32)
+        self.quick.place(relx=0.05, rely=0.4)
         self.quickest = StringVar()
         self.quickoutput=Label(self, text=self.quickest.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.quickoutput.place(relx=0.15, rely=0.32)
+        self.quickoutput.place(relx=0.15, rely=0.4)
 
         self.quicktime=Label(self, text='Time:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.quicktime.place(relx=0.05, rely=0.36)
+        self.quicktime.place(relx=0.05, rely=0.45)
 
         self.quickestTime = StringVar()
         self.quicktimeoutput=Label(self, text=self.quickestTime.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.quicktimeoutput.place(relx=0.15, rely=0.36)
+        self.quicktimeoutput.place(relx=0.15, rely=0.45)
 
         self.cheapest=Label(self, text='Fittest Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.cheapest.place(relx=0.05, rely=0.46)
+        self.cheapest.place(relx=0.05, rely=0.55)
 
         self.cheap = StringVar()
         self.cheapestoutput=Label(self, text=self.cheap.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.cheapestoutput.place(relx=0.15, rely=0.46)
+        self.cheapestoutput.place(relx=0.15, rely=0.55)
 
         self.cheapcost=Label(self, text='Cost:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.cheapcost.place(relx=0.05, rely=0.50)
+        self.cheapcost.place(relx=0.05, rely=0.6)
         self.cheapOutput = StringVar()
         self.cheapcostoutput=Label(self, text=self.cheapOutput.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.cheapcostoutput.place(relx=0.15, rely=0.50)
+        self.cheapcostoutput.place(relx=0.15, rely=0.6)
 
         self.middlest=Label(self, text='Average Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.middlest.place(relx=0.05, rely=0.60)
+        self.middlest.place(relx=0.05, rely=0.7)
 
-        self.middle = StringVar()
+        self.middle=StringVar()
         self.middlestOutput=Label(self, text=self.middle.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.middlestOutput.place(relx=0.15, rely=0.60)
+        self.middlestOutput.place(relx=0.15, rely=0.7)
 
         self.middleCost=Label(self, text='Cost:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.middleCost.place(relx=0.05, rely=0.64)
-        self.middleOutputCost = StringVar()
+        self.middleCost.place(relx=0.05, rely=0.75)
+        self.middleOutputCost=StringVar()
         self.middleOutput=Label(self, text=self.middleOutputCost.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.middleOutput.place(relx=0.15, rely=0.64)
+        self.middleOutput.place(relx=0.15, rely=0.75)
 
-        self.frame = Frame(self, width=500, height=500, bg="#c6c6c4")
+        self.frame=Frame(self, width=340, height=260, bg="#d92d33")
         self.frame.place(relx=0.70, rely=0.18)
 
-        self.legendHead = Label(self.frame, text="Legend:", font=("Helvetica", "12"), fg="#d92d33", bg="#c6c6c4")
-        self.legendHead.grid(row=0)
+        self.legendHead=Label(self.frame, text="Legend:", font=("Helvetica", "12"), bg="#d92d33", fg="#c6c6c4")
+        self.legendHead.place(relx=0.05, rely=0.05)
 
-        temp = Label(self.frame, text="Time", font=("Helvetica", "12"), fg="#d92d33", bg="#c6c6c4")
-        temp.grid(row=1, column=1)
+        temp=Label(self.frame, text="Time", font=("Helvetica", "12"), bg="#d92d33", fg="#c6c6c4")
+        temp.place(relx=0.4, rely=0.2)
 
-        temp = Label(self.frame, text="        ", fg="#d92d33", bg="#c6c6c4")
-        temp.grid(row=1, column=2)
+        temp=Label(self.frame, text="Cost", font=("Helvetica", "12"), bg="#d92d33", fg="#c6c6c4")
+        temp.place(relx=0.75, rely=0.2)
 
-        temp = Label(self.frame, text="Cost", font=("Helvetica", "12"), fg="#d92d33", bg="#c6c6c4")
-        temp.grid(row=1, column=3)
+        temp=Label(self.frame, text="Bike", font=("Helvetica", "12"), bg="#d92d33", fg="#c6c6c4")
+        temp.place(relx=0.1, rely=0.35)
 
-        temp = Label(self.frame, text="Bike", font=("Helvetica", "12"), fg="#d92d33", bg="#c6c6c4")
-        temp.grid(row=2, column=0)
+        temp=Label(self.frame, text="100", font=("Helvetica", "12"), bg="#d92d33")
+        temp.place(relx=0.4, rely=0.35)
 
-        temp = Label(self.frame, text="100", font=("Helvetica", "12"), bg="#c6c6c4")
-        temp.grid(row=2, column=1)
+        temp=Label(self.frame, text="0", font=("Helvetica", "12"), bg="#d92d33")
+        temp.place(relx=0.75, rely=0.35)
 
-        temp = Label(self.frame, text="        ", bg="#c6c6c4")
-        temp.grid(row=2, column=2)
+        temp=Label(self.frame, text="Taxi", font=("Helvetica", "12"), bg="#d92d33", fg="#c6c6c4")
+        temp.place(relx=0.1, rely=0.5)
 
-        temp = Label(self.frame, text="0", font=("Helvetica", "12"), bg="#c6c6c4")
-        temp.grid(row=2, column=3)
+        temp=Label(self.frame, text="30", font=("Helvetica", "12"), bg="#d92d33")
+        temp.place(relx=0.4, rely=0.5)
 
-        temp = Label(self.frame, text="Taxi", font=("Helvetica", "12"), fg="#d92d33", bg="#c6c6c4")
-        temp.grid(row=3, column=0)
+        temp=Label(self.frame, text="40", font=("Helvetica", "12"), bg="#d92d33")
+        temp.place(relx=0.75, rely=0.5)
 
-        temp = Label(self.frame, text="30", font=("Helvetica", "12"), bg="#c6c6c4")
-        temp.grid(row=3, column=1)
+        temp=Label(self.frame, text="Train", font=("Helvetica", "12"), bg="#d92d33", fg="#c6c6c4")
+        temp.place(relx=0.1, rely=0.65)
 
-        temp = Label(self.frame, text="        ", bg="#c6c6c4")
-        temp.grid(row=3, column=2)
+        temp=Label(self.frame, text="20", font=("Helvetica", "12"), bg="#d92d33")
+        temp.place(relx=0.4, rely=0.65)
 
-        temp = Label(self.frame, text="40", font=("Helvetica", "12"), bg="#c6c6c4")
-        temp.grid(row=3, column=3)
+        temp=Label(self.frame, text="20", font=("Helvetica", "12"), bg="#d92d33")
+        temp.place(relx=0.75, rely=0.65)
 
-        temp = Label(self.frame, text="Train", font=("Helvetica", "12"), fg="#d92d33", bg="#c6c6c4")
-        temp.grid(row=4, column=0)
+        temp=Label(self.frame, text="Note: trains are only available on certain segments,", font=("Helvetica", "10"), bg="#d92d33")
+        temp.place(relx=0.05, rely=0.8)
 
-        temp = Label(self.frame, text="20", font=("Helvetica", "12"), bg="#c6c6c4")
-        temp.grid(row=4, column=1)
-
-        temp = Label(self.frame, text="        ", bg="#c6c6c4")
-        temp.grid(row=4, column=2)
-
-        temp = Label(self.frame, text="20", font=("Helvetica", "12"), bg="#c6c6c4")
-        temp.grid(row=4, column=3)
-
-        temp = Label(self.frame, text="", bg="#c6c6c4")
-        temp.grid(row=5, column=0)
-
-        temp = Label(self.frame, text="Note: trains are only available on certain segments,", font=("Helvetica", "10"), bg="#c6c6c4")
-        temp.grid(row=6, column=0, columnspan=4)
-
-        temp = Label(self.frame, text="those in the map not colored red.", font=("Helvetica", "10"), bg="#c6c6c4")
-        temp.grid(row=7, column=0, columnspan=3)
-
-        # Nodes 1-48.
+        temp=Label(self.frame, text="those in the map not colored red.", font=("Helvetica", "10"), bg="#d92d33")
+        temp.place(relx=0.05, rely=0.87)
 
         self.photo1=PhotoImage(file='E1.pbm')
         self.pic1=Label(self, image=self.photo1, bd=0)
