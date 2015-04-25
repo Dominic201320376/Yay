@@ -17,6 +17,8 @@ class GUI(Tk):
         self.bgimage=Label(image=self.image)
         self.bgimage.place(x=0, y=0, relwidth=1, relheight=1)
 
+        self.tk.call('wm', 'iconphoto', self._w, self.image)
+
         self.setedge()
     def setedge(self):
         self.headerphoto=PhotoImage(file='Logo.pbm')
@@ -57,7 +59,7 @@ class GUI(Tk):
         self.quicktimeoutput=Label(self, text=self.quickestTime.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
         self.quicktimeoutput.place(relx=0.15, rely=0.36)
 
-        self.cheapest=Label(self, text='Cheapest Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
+        self.cheapest=Label(self, text='Fittest Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
         self.cheapest.place(relx=0.05, rely=0.46)
 
         self.cheap = StringVar()
@@ -69,6 +71,19 @@ class GUI(Tk):
         self.cheapOutput = StringVar()
         self.cheapcostoutput=Label(self, text=self.cheapOutput.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
         self.cheapcostoutput.place(relx=0.15, rely=0.50)
+
+        self.middlest=Label(self, text='Average Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
+        self.middlest.place(relx=0.05, rely=0.60)
+
+        self.middle = StringVar()
+        self.middlestOutput=Label(self, text=self.middle.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
+        self.middlestOutput.place(relx=0.15, rely=0.60)
+
+        self.middleCost=Label(self, text='Cost:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
+        self.middleCost.place(relx=0.05, rely=0.64)
+        self.middleOutputCost = StringVar()
+        self.middleOutput=Label(self, text=self.middleOutputCost.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
+        self.middleOutput.place(relx=0.15, rely=0.64)
 
         self.frame = Frame(self, width=500, height=500, bg="#c6c6c4")
         self.frame.place(relx=0.70, rely=0.18)
@@ -437,15 +452,22 @@ class GUI(Tk):
         x, y = a.algorithm(b.get_start(), b.get_end(), b, 0, None)
         self.cheap.set(y)
         self.cheapestoutput.configure(text=self.cheap.get())
-        self.cheapOutput.set(x)
+        self.cheapOutput.set(str(x) + " minutes")
         self.cheapcostoutput.configure(text=self.cheapOutput.get())
 
         a = A_star()
         x, y = a.algorithm(b.get_start(), b.get_end(), b, 1, None)
         self.quickest.set(y)
         self.quickoutput.configure(text=self.quickest.get())
-        self.quickestTime.set(x)
+        self.quickestTime.set(str(x) + " minutes")
         self.quicktimeoutput.configure(text=self.quickestTime.get())
+
+        a = A_star()
+        x, y = a.algorithm(b.get_start(), b.get_end(), b, 2, None)
+        self.middle.set(y)
+        self.middlestOutput.configure(text=self.middle.get())
+        self.middleOutputCost.set(str(x) + " pesos per minute")
+        self.middleOutput.configure(text=self.middleOutputCost.get())
 
 g=GUI(None)
 g.main()
