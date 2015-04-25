@@ -27,67 +27,67 @@ class GUI(Tk):
         self.header.place(relx=0.02, rely=0.01)
 
         self.start=Label(self, text='Start:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.start.place(relx=0.05, rely=0.2)
+        self.start.place(relx=0.1, rely=0.25)
 
         self.startVar = StringVar()        
         self.startinput=Label(self, text=self.startVar.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.startinput.place(relx=0.1, rely=0.2)
+        self.startinput.place(relx=0.15, rely=0.25)
         self.startbutton=Button(self, text='Clear', command=self.clearStart, font=('Helvetica', "12"), bg='#d92d33', fg='#c6c6c4')
-        self.startbutton.place(relx=0.15, rely=0.2)
+        self.startbutton.place(relx=0.2, rely=0.25)
 
         self.end=Label(self, text='End:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.end.place(relx=0.05, rely=0.25)
+        self.end.place(relx=0.1, rely=0.3)
 
         self.endVar = StringVar()
         self.endinput=Label(self, text=self.endVar.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.endinput.place(relx=0.1, rely=0.25)
+        self.endinput.place(relx=0.15, rely=0.3)
         self.endbutton=Button(self, text='Clear', command=self.clearEnd, font=('Helvetica', "12"), bg='#d92d33', fg='#c6c6c4')
-        self.endbutton.place(relx=0.15, rely=0.25)
+        self.endbutton.place(relx=0.2, rely=0.3)
 
         self.submit = Button(self, text="     Submit     ", command=self.submit, font=('Helvetica', "18"), bg='#d92d33', fg='#c6c6c4')
-        self.submit.place(relx=0.052, rely=0.305)
+        self.submit.place(relx=0.102, rely=0.355)
 
         self.quick=Label(self, text='Quickest Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.quick.place(relx=0.05, rely=0.4)
+        self.quick.place(relx=0.1, rely=0.45)
         self.quickest = StringVar()
         self.quickoutput=Label(self, text=self.quickest.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.quickoutput.place(relx=0.15, rely=0.4)
+        self.quickoutput.place(relx=0.2, rely=0.45)
 
         self.quicktime=Label(self, text='Time:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.quicktime.place(relx=0.05, rely=0.45)
+        self.quicktime.place(relx=0.1, rely=0.5)
 
         self.quickestTime = StringVar()
         self.quicktimeoutput=Label(self, text=self.quickestTime.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.quicktimeoutput.place(relx=0.15, rely=0.45)
+        self.quicktimeoutput.place(relx=0.2, rely=0.5)
 
         self.cheapest=Label(self, text='Fittest Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.cheapest.place(relx=0.05, rely=0.55)
+        self.cheapest.place(relx=0.1, rely=0.6)
 
         self.cheap = StringVar()
         self.cheapestoutput=Label(self, text=self.cheap.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.cheapestoutput.place(relx=0.15, rely=0.55)
+        self.cheapestoutput.place(relx=0.2, rely=0.6)
 
         self.cheapcost=Label(self, text='Cost:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.cheapcost.place(relx=0.05, rely=0.6)
+        self.cheapcost.place(relx=0.1, rely=0.65)
         self.cheapOutput = StringVar()
         self.cheapcostoutput=Label(self, text=self.cheapOutput.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.cheapcostoutput.place(relx=0.15, rely=0.6)
+        self.cheapcostoutput.place(relx=0.2, rely=0.65)
 
         self.middlest=Label(self, text='Average Path:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.middlest.place(relx=0.05, rely=0.7)
+        self.middlest.place(relx=0.1, rely=0.75)
 
         self.middle=StringVar()
         self.middlestOutput=Label(self, text=self.middle.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.middlestOutput.place(relx=0.15, rely=0.7)
+        self.middlestOutput.place(relx=0.2, rely=0.75)
 
         self.middleCost=Label(self, text='Cost:', font=('Helvetica', "12"), fg='#d92d33', bg='#c6c6c4')
-        self.middleCost.place(relx=0.05, rely=0.75)
+        self.middleCost.place(relx=0.1, rely=0.8)
         self.middleOutputCost=StringVar()
         self.middleOutput=Label(self, text=self.middleOutputCost.get(), font=('Helvetica', "12"), fg='#443266', bg='#c6c6c4')
-        self.middleOutput.place(relx=0.15, rely=0.75)
+        self.middleOutput.place(relx=0.2, rely=0.8)
 
         self.frame=Frame(self, width=340, height=260, bg="#d92d33")
-        self.frame.place(relx=0.70, rely=0.18)
+        self.frame.place(relx=0.665, rely=0.35)
 
         self.legendHead=Label(self.frame, text="Legend:", font=("Helvetica", "12"), bg="#d92d33", fg="#c6c6c4")
         self.legendHead.place(relx=0.05, rely=0.05)
