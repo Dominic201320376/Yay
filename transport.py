@@ -13,7 +13,7 @@ class path():
 		self.initialize(train1)
 
 	def initialize(self, train1):
-		self.types[30] = 40
+		self.types[40] = 30
 
 		if train1 == 1:
 			self.types[20] = 20
@@ -432,14 +432,21 @@ class A_star():
 			else:
 				self.generate(curr, maps)
 				if type1 == 0:
-					cost = self.path[curr] + curr.get_type()
+					cost = self.path[curr] + 100 + curr.get_type()
 				for move in self.moves:
 					if type1 == 1:
 						temp = move.get_types()
 						try:
 							cost = self.path[curr] + temp[20] + curr.get_type()
 						except:
-							cost = self.path[curr] + temp[30]+ curr.get_type()
+							cost = self.path[curr] + temp[40]+ curr.get_type()
+					elif type1 == 2:
+						temp = move.get_types()
+						try:
+							a=temp[20]
+							cost = self.path[curr] + 1 + curr.get_type()
+						except:
+							cost = self.path[curr] + 1.333333333333333333 + curr.get_type()
 					if move not in self.path or cost < self.path[move]:
 						#self.heuristic[move] = heuristic(move, goal) + cost
 						self.path[move] = cost
