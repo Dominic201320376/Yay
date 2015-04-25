@@ -17,12 +17,12 @@ class GUI(Tk):
         self.bgimage=Label(image=self.image)
         self.bgimage.place(x=0, y=0, relwidth=1, relheight=1)
 
-        self.logo=PhotoImage(file='BasicLogo.pbm')
+        self.logo=PhotoImage(file='BasicLogo.GIF')
         self.tk.call('wm', 'iconphoto', self._w, self.logo)
 
         self.setedge()
     def setedge(self):
-        self.headerphoto=PhotoImage(file='Logo.pbm')
+        self.headerphoto=PhotoImage(file='Logo.GIF')
         self.header=Label(self, image=self.headerphoto, bd=0)
         self.header.place(relx=0.02, rely=0.01)
 
